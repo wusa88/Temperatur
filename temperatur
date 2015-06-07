@@ -33,7 +33,7 @@ h = ("/sys/bus/w1/devices/28-000006156279/w1_slave")
 i = ("/sys/bus/w1/devices/28-00000615025b/w1_slave")
 j = ("/sys/bus/w1/devices/28-000006157b8c/w1_slave")
 
-lt = localtime()
+#lt = localtime()
 #Sensor buero
 #buero = open(sensorbuero)
 #tfile = buero.read()
