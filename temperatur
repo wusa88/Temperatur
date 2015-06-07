@@ -172,7 +172,7 @@ print "open db ok"
 c = conn.cursor()
 sql_command = ('''create table if not exists temp (id integer PRIMARY KEY AUTOINCREMENT, zeit DATETIME DEFAULT CURRENT_TIMESTAMP, temp1 NUMERIC)''');
 c.execute(sql_command)
-print "Tabelle erstelle!"
+print "Tabelle erstellt!"
 
 c.execute("INSERT INTO temp(temp1) values" (sensortemp1))
 conn.commit()
