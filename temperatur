@@ -216,7 +216,7 @@ except Exception as e:
 
 try:
 	conn = sqlite3.connect(dbname)
-	print "open db ok"
+	print ("open db ok")
 	c = conn.cursor()
 	sql_command = ('''create table if not exists temperatur (id INTEGER PRIMARY KEY AUTOINCREMENT, zeit DATETIME, temp1 NUMERIC, temp2 NUMERIC, temp3 NUMERIC, temp4 NUMERIC, temp5 NUMERIC, temp6 NUMERIC, temp7 NUMERIC, temp8 NUMERIC, temp9 NUMERIC, temp10 NUMERIC)''');
 	c.execute(sql_command)
@@ -228,7 +228,7 @@ except Exception as e:
 try: 
 	c.execute ('INSERT INTO temperatur(zeit, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10) VALUES (?,?,?,?,?,?,?,?,?,?,?)', (zeit, temp1,temp2,temp3,temp4,temp5,temp6,temp7,temp8,temp9,temp10,))
 	conn.commit()
-	conn.close()
+	#conn.close()
 except Exception as e: 
 	print ("Fehler beim Befuellen der Tabelle",e)
 	
