@@ -133,59 +133,77 @@ except:
 #sleep(0.2)
 
 #Sensor
-sen6= open(f)
-tfile6 = sen6.read()
-sen6.close()
-tempdata = tfile6.split("\n")[1].split(" ")[9]
-temp6 = float(tempdata[2:])
-temp6 = temp6 / 1000
-temp6 = round(temp6,2)
-temp6 = str(temp6)
+try:
+	sen6= open(f)
+	tfile6 = sen6.read()
+	sen6.close()
+	tempdata = tfile6.split("\n")[1].split(" ")[9]
+	temp6 = float(tempdata[2:])
+	temp6 = temp6 / 1000
+	temp6 = round(temp6,2)
+	temp6 = str(temp6)
+except:
+	print "Senor 6 Fehler!"
+
 #sleep(0.2)
 
 #Sensor
-sen7= open(g)
-tfile7 = sen7.read()
-sen7.close()
-tempdata = tfile7.split("\n")[1].split(" ")[9]
-temp7 = float(tempdata[2:])
-temp7 = temp7 / 1000
-temp7 = round(temp7,2)
-temp7 = str(temp7)
+try:
+	sen7= open(g)
+	tfile7 = sen7.read()
+	sen7.close()
+	tempdata = tfile7.split("\n")[1].split(" ")[9]
+	temp7 = float(tempdata[2:])
+	temp7 = temp7 / 1000
+	temp7 = round(temp7,2)
+	temp7 = str(temp7)
+except:
+	print "Sensor 7 Fehler!"
+
+
+
 #sleep(0.2)
 
 #Sensor
-sen8= open(h)
-tfile8 = sen8.read()
-sen8.close()
-tempdata = tfile8.split("\n")[1].split(" ")[9]
-temp8 = float(tempdata[2:])
-temp8= temp8 / 1000
-temp8 = round(temp8,2)
-temp8 = str(temp8)
+try:
+	sen8= open(h)
+	tfile8 = sen8.read()
+	sen8.close()
+	tempdata = tfile8.split("\n")[1].split(" ")[9]
+	temp8 = float(tempdata[2:])
+	temp8= temp8 / 1000
+	temp8 = round(temp8,2)
+	temp8 = str(temp8)
+except:
+	print "Sensor 8 Fehler!"
 #sleep(0.2)
 
 #Sensor
-sen9= open(i)
-tfile9 = sen9.read()
-sen9.close()
-tempdata = tfile9.split("\n")[1].split(" ")[9]
-temp9 = float(tempdata[2:])
-temp9 = temp9 / 1000
-temp9 = round(temp9,2)
-temp9 = str(temp9)
+try: 
+	sen9= open(i)
+	tfile9 = sen9.read()
+	sen9.close()
+	tempdata = tfile9.split("\n")[1].split(" ")[9]
+	temp9 = float(tempdata[2:])
+	temp9 = temp9 / 1000
+	temp9 = round(temp9,2)
+	temp9 = str(temp9)
+except: 
+	print "Sensor 9 Fehler!"	
 #sleep(0.2)
 
 #Sensor
-sen10= open(j)
-tfile10 = sen10.read()
-sen10.close()
-tempdata = tfile10.split("\n")[1].split(" ")[9]
-temp10 = float(tempdata[2:])
-temp10 = temp10 / 1000
-temp10 = round(temp10,2)
-temp10 = str(temp10)
-
+try:
+	sen10= open(j)
+	tfile10 = sen10.read()
+	sen10.close()
+	tempdata = tfile10.split("\n")[1].split(" ")[9]
+	temp10 = float(tempdata[2:])
+	temp10 = temp10 / 1000
+	temp10 = round(temp10,2)
+	temp10 = str(temp10)
+except: 
+	print "Sensor 10 Fehler!"Â
 #log_temp()
 
 #Datum = strftime("%d.%m.%Y")
