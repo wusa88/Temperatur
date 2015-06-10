@@ -37,7 +37,7 @@ j = ("/sys/bus/w1/devices/28-000006157b8c/w1_slave")
 ##Zeit aufrufen###
 
 def TimeStamp():
-    stamp = time.strftime("%d.%m.%Y %H:%M:%S", time.localtime())
+    stamp = time.strftime("%d.%m.%Y_%H:%M:%S", time.localtime())
     return(stamp)
 
 zeit = TimeStamp()
