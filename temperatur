@@ -21,6 +21,7 @@ plot = "/home/pi/Desktop/programme/plot.plt"
 gnuplot = "/usr/bin/gnuplot"
 dbname = '/var/www/db.sqlite'
 
+###Sensoren zuweisen###
 #sensorbuero = ("/sys/bus/w1/devices/28-0000053c5e59/w1_slave")
 a = ("/sys/bus/w1/devices/28-00000628848d/w1_slave")
 b = ("/sys/bus/w1/devices/28-00000615380c/w1_slave")
@@ -33,11 +34,15 @@ h = ("/sys/bus/w1/devices/28-000006156279/w1_slave")
 i = ("/sys/bus/w1/devices/28-00000615025b/w1_slave")
 j = ("/sys/bus/w1/devices/28-000006157b8c/w1_slave")
 
+##Zeit aufrufen###
+
 def TimeStamp():
     stamp = time.strftime("%d.%m.%Y %H:%M:%S", time.localtime())
     return(stamp)
 
 zeit = TimeStamp()
+
+###Sensoren einlesen###
 
 #Sensor 1
 try:
