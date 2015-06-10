@@ -60,16 +60,16 @@ try:
 	tfile1 = sen1.read()
 	sen1.close()
 	tempdata = tfile1.split("\n")[1].split(" ")[9]
-	sentemp1 = float(tempdata[2:])
-	sentemp1 = sentemp1 / 1000
-	sensortemp1 = round(sentemp1,2)
-	sensortemp1 = float(sensortemp1)
-except:
-	print "Sensor 1 Fehler!"
+	temp1 = float(tempdata[2:])
+	temp1 = temp1 / 1000
+	temp1 = round(temp1,2)
+	temp1 = float(temp1)
+except Exception as e:
+	print ("Sensor 1 Fehler!",e)
 
-print type(sensortemp1)
-print sensortemp1
-sensortemp1 = str(sensortemp1)
+#print type(sensortemp1)
+#print sensortemp1
+#sensortemp1 = str(sensortemp1)
 #print type(sensortemp1)
 #sleep(0.2)
 
@@ -83,8 +83,8 @@ try:
 	temp2 = temp2 / 1000
 	temp2 = round(temp2,2)
 	temp2 = str(temp2)
-except: 
-	print "Sensor 2 Fehler!"
+except Exception as e: 
+	print ("Sensor 2 Fehler!",e)
 #sleep(0.2)
 
 #Sensor
@@ -94,11 +94,11 @@ try:
 	sen3.close()
 	tempdata = tfile3.split("\n")[1].split(" ")[9]
 	temp3 = float(tempdata[2:])
-	temp3= temp3 / 1000
+	temp3 = temp3 / 1000
 	temp3 = round(temp3,2)
 	temp3 = str(temp3)
-except:
-	print "Sensor 3 Fehler!"
+except Exception as e:
+	print ("Sensor 3 Fehler!",e)
 
 #sleep(0.2)
 
@@ -112,8 +112,8 @@ try:
 	temp4 = temp4 / 1000
 	temp4 = round(temp4,2)
 	temp4 = str(temp4)
-except: 
-	print "Sensor 4 Fehler!"
+except Exception as e: 
+	print ("Sensor 4 Fehler!",e)
 
 #sleep(0.2)
 
@@ -127,8 +127,8 @@ try:
 	temp5 = temp5 / 1000
 	temp5 = round(temp5,2)
 	temp5 = str(temp5)
-except:
-	print "Sensor 5 Fehler!"	
+except Exception as e:
+	print ("Sensor 5 Fehler!",e)
 
 #sleep(0.2)
 
@@ -142,8 +142,8 @@ try:
 	temp6 = temp6 / 1000
 	temp6 = round(temp6,2)
 	temp6 = str(temp6)
-except:
-	print "Senor 6 Fehler!"
+except Exception as e:
+	print ("Senor 6 Fehler!")
 
 #sleep(0.2)
 
@@ -157,8 +157,8 @@ try:
 	temp7 = temp7 / 1000
 	temp7 = round(temp7,2)
 	temp7 = str(temp7)
-except:
-	print "Sensor 7 Fehler!"
+except Exception as e :
+	print ("Sensor 7 Fehler!",e)
 
 
 
@@ -174,8 +174,8 @@ try:
 	temp8= temp8 / 1000
 	temp8 = round(temp8,2)
 	temp8 = str(temp8)
-except:
-	print "Sensor 8 Fehler!"
+except Exception as e:
+	print ("Sensor 8 Fehler!",e)
 #sleep(0.2)
 
 #Sensor
@@ -188,8 +188,8 @@ try:
 	temp9 = temp9 / 1000
 	temp9 = round(temp9,2)
 	temp9 = str(temp9)
-except: 
-	print "Sensor 9 Fehler!"	
+except Exception as e: 
+	print ("Sensor 9 Fehler!",e)
 #sleep(0.2)
 
 #Sensor
@@ -202,8 +202,9 @@ try:
 	temp10 = temp10 / 1000
 	temp10 = round(temp10,2)
 	temp10 = str(temp10)
-except: 
-	print "Sensor 10 Fehler!"Â
+except Exception as e: 
+	print ("Sensor 10 Fehler!",e)
+
 #log_temp()
 
 #Datum = strftime("%d.%m.%Y")
@@ -220,16 +221,16 @@ try:
 	sql_command = ('''create table if not exists temperatur (id INTEGER PRIMARY KEY AUTOINCREMENT, zeit DATETIME, temp1 NUMERIC, temp2 NUMERIC, temp3 NUMERIC, temp4 NUMERIC, temp5 NUMERIC, temp6 NUMERIC, temp7 NUMERIC, temp8 NUMERIC, temp9 NUMERIC, temp10 NUMERIC)''');
 	c.execute(sql_command)
 	conn.commit()
-	print "Tabelle erstellt!"
-except: 
-	print "Fehler beim erstellen der Tabelle"
+	print ("Tabelle erstellt!")
+except Exception as e: 
+	print ("Fehler beim erstellen der Tabelle",e)
 
 try: 
-	c.execute ('INSERT INTO temperatur(zeit, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10) VALUES (?,?,?,?,?,?,?,?,?,?,?)', (zeit, sensortemp1,temp2,temp3,temp4,temp5,temp6,temp7,temp8,temp9,temp10,))
+	c.execute ('INSERT INTO temperatur(zeit, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10) VALUES (?,?,?,?,?,?,?,?,?,?,?)', (zeit, temp1,temp2,temp3,temp4,temp5,temp6,temp7,temp8,temp9,temp10,))
 	conn.commit()
 	conn.close()
-except: 
-	print "Fehler beim Befuellen der Tabelle"
+except Exception as e: 
+	print ("Fehler beim Befuellen der Tabelle",e)
 	
 
 #if __name__=="__main__":
