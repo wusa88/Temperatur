@@ -9,6 +9,3 @@ plot '<sqlite3 /var/www/db.sqlite "SELECT * FROM (SELECT id, zeit, temp1 FROM te
 set output "temperatur.jpg"
 set terminal jpeg
 replot
-
-
-
