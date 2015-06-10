@@ -1,0 +1,12 @@
+connection = sqlite3.connect("ds18b20.db")
+
+cursor = connection.cursor()
+
+sql = ("SELECT * FROM messdaten order by timedata desc limit 2")
+cursor.execute(sql)
+
+for inhalt in cursor:
+    print(inhalt)
+    print(type(inhalt[0]))
+    print(type(inhalt[1]))
+connection.close()
