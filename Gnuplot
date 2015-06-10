@@ -4,7 +4,9 @@ set timefmt "%d.%m.%Y %H:%M:%S"
 set format x "%H:%M"
 set ylabel 'Grad Celsius'
 set yrange [-5:100]
-plot '<sqlite3 /var/www/db.sqlite "SELECT * FROM (SELECT * FROM temperatur ORDER BY id DESC LIMIT 4) as tmp ORDER BY tmp.id ASC;"' using 0:1 with $
+plot '<sqlite3 /var/www/db.sqlite "SELECT * FROM (SELECT * FROM temperatur ORDER BY id DESC LIMIT 4) as tmp ORDER BY tmp.id ASC;"' using 1:2 with $
 set output "temperatur.jpg"
 set terminal jpeg
 replot
+
+
