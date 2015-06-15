@@ -1,4 +1,5 @@
 ### Anzeige einer einzelnen Temperaturkurve ###
+
 set title "'Temperaturverlauf am'%d"
 set xdata time
 set timefmt "%d.%m.%Y_%H:%M:%S"
@@ -9,10 +10,13 @@ plot '<sqlite3 /var/www/db.sqlite "SELECT * FROM (SELECT id, zeit, temp1 FROM te
 set output "temperatur.jpg"
 set terminal jpeg
 replot
+
 ###------------------------###
 
 
+
 ### Anzeige / Gegenüberstellung 2 Temperaturkurven ###
+
 set title "Temperaturverlauf am "
 set datafile separator '|'
 set xdata time
@@ -25,4 +29,5 @@ plot '<sqlite3 /var/www/db.sqlite "SELECT * FROM (SELECT id, zeit, temp1 FROM te
 set output "temperatur.jpg"
 set terminal jpeg
 replot
+
 ###------------------------###
