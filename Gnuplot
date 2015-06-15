@@ -15,7 +15,7 @@ replot
 
 
 
-### Anzeige / Gegenüberstellung 2 Temperaturkurven, Erzeugtes Bild auf 1000 x 300 Pixel angepasst ###
+### Anzeige / Gegenüberstellung 2 Temperaturkurven (der letzten 4 Einträte) 1 Eintrag/15 min (Anzeige der letzten Stunde), Erzeugtes Bild auf 1000 x 300 Pixel angepasst ###
 
 
 set title "Temperaturverlauf am "
