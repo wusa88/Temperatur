@@ -15,19 +15,23 @@ replot
 
 
 
-### Anzeige / Gegenüberstellung 2 Temperaturkurven ###
+### Anzeige / Gegenüberstellung 2 Temperaturkurven, Erzeugtes Bild auf 1000 x 300 Pixel angepasst ###
+
 
 set title "Temperaturverlauf am "
 set datafile separator '|'
+set key below
 set xdata time
 set timefmt "%Y-%m-%d %H:%M:%S"
-set format x "%H:%M"
+set format x "%H\n%M"
 set ylabel 'Grad Celsius'
 set yrange [-5:100]
-plot '<sqlite3 /var/www/db.sqlite "SELECT * FROM (SELECT id, zeit, temp1 FROM temperatur ORDER BY id DESC LIMIT 2) as tmp ORDER BY tmp.id ASC;"'  using 2:3 with lines title "t1",\
- '<sqlite3 /var/www/db.sqlite "SELECT * FROM (SELECT id, zeit, temp1, temp2 FROM temperatur ORDER BY id DESC LIMIT 2) as tmp ORDER BY tmp.id ASC;"'  using 2:4 with lines title "t2"
-set output "temperatur.jpg"
-set terminal jpeg
+set size 1,1
+plot '<sqlite3 /var/www/db.sqlite "SELECT * FROM (SELECT id, zeit, temp1 FROM temperatur ORDER BY id DESC LIMIT 4) as tmp ORDER BY tmp.id ASC;"'  using 2:3 with points title "t3",\
+'<sqlite3 /var/www/db.sqlite "SELECT * FROM (SELECT id, zeit, temp1, temp2 FROM temperatur ORDER BY id DESC LIMIT 4) as tmp ORDER BY tmp.id ASC;"'  using 2:4 with lines title "t2"
+set output "temperatur.png"
+set terminal png size 1000,300
 replot
+
 
 ###------------------------###
