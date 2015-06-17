@@ -15,6 +15,11 @@ Expand Filesystem
 Reboot
 
 
+Aktualisieren:
+sudo apt-get update
+sudo apt-get upgrade
+
+
 IP Adresse einstellen:
 sudo nano /etc/network/interfaces
 
@@ -25,9 +30,11 @@ sudo dphys-swapfile uninstall
 sudo update-rc.d dphys-swapfile remove
 
 Nginx installieren:
-sudo apt-get install nginx
+sudo apt-get install nginx php5-fpm php5-cgi php5-cli php5-common
 
 Nginx anpassen:
+root /var/www;
+
 location ~ \.php$ {
 	try_files $uri =404;
 	fastcgi_split_path_info ^(.+\.php)(/.+)$;
@@ -47,3 +54,17 @@ index index.html index.htm;
 durch Zeile ersezten:
 index index.html index.htm index.php;
 
+Nginx Benutzer und Rechte:
+sudo user add www-data
+sudo group add www-data
+sudo user mod –g www-data www-data
+sudo mkdir /var/www
+sudo chmod 775 /var/www –R
+sudo chown www-data:www-data /var/www
+
+
+Sqlite3 installieren
+sudo apt-get install sqlite3
+
+
+Dateien einfügen
