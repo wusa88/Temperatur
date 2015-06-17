@@ -55,9 +55,9 @@ durch Zeile ersezten:
 index index.html index.htm index.php;
 
 Nginx Benutzer und Rechte:
-sudo user add www-data
-sudo group add www-data
-sudo user mod –g www-data www-data
+sudo useradd www-data
+sudo groupadd www-data
+sudo usermod –g www-data www-data
 sudo mkdir /var/www
 sudo chmod 775 /var/www –R
 sudo chown www-data:www-data /var/www
@@ -67,4 +67,12 @@ Sqlite3 installieren
 sudo apt-get install sqlite3
 
 
+User Pi Root Recht entziehen:
+sudo su
+passwd
+
+
 Dateien einfügen
+
+
+
