@@ -27,7 +27,7 @@ set format x "%H\n%M"
 set ylabel 'Grad Celsius'
 set yrange [-5:100]
 set size 1,1
-plot '<sqlite3 /var/www/db.sqlite "SELECT * FROM (SELECT id, zeit, temp1 FROM temperatur ORDER BY id DESC LIMIT 4) as tmp ORDER BY tmp.id ASC;"'  using 2:3 with points title "t3",\
+plot '<sqlite3 /var/www/db.sqlite "SELECT * FROM (SELECT id, zeit, temp1 FROM temperatur ORDER BY id DESC LIMIT 4) as tmp ORDER BY tmp.id ASC;"'  using 2:3 with points title "t1",\
 '<sqlite3 /var/www/db.sqlite "SELECT * FROM (SELECT id, zeit, temp1, temp2 FROM temperatur ORDER BY id DESC LIMIT 4) as tmp ORDER BY tmp.id ASC;"'  using 2:4 with lines title "t2"
 set output "temperatur.png"
 set terminal png size 1000,300
