@@ -21,7 +21,6 @@ plot = "/home/pi/Desktop/programme/plot.plt"
 gnuplot = "/usr/bin/gnuplot"
 dbname = '/var/www/db.sqlite'
 
-###Sensoren zuweisen###
 #sensorbuero = ("/sys/bus/w1/devices/28-0000053c5e59/w1_slave")
 a = ("/sys/bus/w1/devices/28-00000628848d/w1_slave")
 b = ("/sys/bus/w1/devices/28-00000615380c/w1_slave")
@@ -34,16 +33,27 @@ h = ("/sys/bus/w1/devices/28-000006156279/w1_slave")
 i = ("/sys/bus/w1/devices/28-00000615025b/w1_slave")
 j = ("/sys/bus/w1/devices/28-000006157b8c/w1_slave")
 
-##Zeit aufrufen###
+#lt = localtime()
+#Sensor buero
+#buero = open(sensorbuero)
+#tfile = buero.read()
+#buero.close()
+#tempdata = tfile.split("\n")[1].split(" ")[9]
+#temp = float(tempdata[2:])
+#temp = temp / 1000
+#temp = round(temp,2)
+#temp = str(temp)
 
+#time.sleep(0.2)
 def TimeStamp():
-    stamp = time.strftime("%d.%m.%Y_%H:%M:%S", time.localtime())
+    stamp = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     return(stamp)
 
 zeit = TimeStamp()
 
-###Sensoren einlesen###
-
+#print zeit
+#print(len(zeit))
+#print len((zeit,))
 #Sensor 1
 try:
 	sen1 = open(a)
@@ -57,6 +67,12 @@ try:
 except Exception as e:
 	print ("Sensor 1 Fehler!",e)
 
+#print type(sensortemp1)
+#print sensortemp1
+#sensortemp1 = str(sensortemp1)
+#print type(sensortemp1)
+#sleep(0.2)
+
 #Sensor
 try:
 	sen2 = open(b)
@@ -69,6 +85,7 @@ try:
 	temp2 = str(temp2)
 except Exception as e: 
 	print ("Sensor 2 Fehler!",e)
+#sleep(0.2)
 
 #Sensor
 try:
@@ -83,6 +100,8 @@ try:
 except Exception as e:
 	print ("Sensor 3 Fehler!",e)
 
+#sleep(0.2)
+
 #Sensor
 try:
 	sen4= open(d)
@@ -95,6 +114,8 @@ try:
 	temp4 = str(temp4)
 except Exception as e: 
 	print ("Sensor 4 Fehler!",e)
+
+#sleep(0.2)
 
 #Sensor
 try:
@@ -109,6 +130,8 @@ try:
 except Exception as e:
 	print ("Sensor 5 Fehler!",e)
 
+#sleep(0.2)
+
 #Sensor
 try:
 	sen6= open(f)
@@ -121,6 +144,8 @@ try:
 	temp6 = str(temp6)
 except Exception as e:
 	print ("Senor 6 Fehler!")
+
+#sleep(0.2)
 
 #Sensor
 try:
@@ -136,6 +161,9 @@ except Exception as e :
 	print ("Sensor 7 Fehler!",e)
 
 
+
+#sleep(0.2)
+
 #Sensor
 try:
 	sen8= open(h)
@@ -148,6 +176,7 @@ try:
 	temp8 = str(temp8)
 except Exception as e:
 	print ("Sensor 8 Fehler!",e)
+#sleep(0.2)
 
 #Sensor
 try: 
@@ -161,6 +190,7 @@ try:
 	temp9 = str(temp9)
 except Exception as e: 
 	print ("Sensor 9 Fehler!",e)
+#sleep(0.2)
 
 #Sensor
 try:
@@ -175,11 +205,20 @@ try:
 except Exception as e: 
 	print ("Sensor 10 Fehler!",e)
 
+#log_temp()
+
+#Datum = strftime("%d.%m.%Y")
+#Uhrzeit = strftime ("%H:%M:%S")
+#fobj_out = open ("/home/pi/Desktop/programme/tempkomplett.txt","a")
+#fobj_out.write("\n" + Datum + "_" + Uhrzeit + ";" + temp1 + ";"  + temp2 + ";"  + temp3 + ";"  + temp4 + ";"  + temp5 + ";"  + temp6 + ";" + temp7 +";" + temp8 + ";"  + temp9 + ";" + temp10 + ";")
+#fobj_out.close()
+#subprocess.call([gnuplot, plot], stdout=subprocess.PIPE)
+
 try:
 	conn = sqlite3.connect(dbname)
 	print ("open db ok")
 	c = conn.cursor()
-	sql_command = ('''create table if not exists temperatur (id INTEGER PRIMARY KEY AUTOINCREMENT, zeit DATETIME, temp1 NUMERIC, temp2 NUMERIC, temp3 NUMERIC, temp4 NUMERIC, temp5 NUMERIC, temp6 NUMERIC, temp7 NUMERIC, temp8 NUMERIC, temp9 NUMERIC, temp10 NUMERIC)''');
+	sql_command = ('''create table if not exists temperatur (id INTEGER PRIMARY KEY AUTOINCREMENT, zeit DATETIME, temp1, temp2 NUMERIC, temp3 NUMERIC, temp4 NUMERIC, temp5 NUMERIC, temp6 NUMERIC, temp7 NUMERIC, temp8 NUMERIC, temp9 NUMERIC, temp10 NUMERIC)''');
 	c.execute(sql_command)
 	conn.commit()
 	print ("Tabelle erstellt!")
@@ -187,7 +226,7 @@ except Exception as e:
 	print ("Fehler beim erstellen der Tabelle",e)
 
 try: 
-	c.execute ('INSERT INTO temperatur(zeit, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10) VALUES (?,?,?,?,?,?,?,?,?,?,?)', (zeit, temp1,temp2,temp3,temp4,temp5,temp6,temp7,temp8,temp9,temp10,))
+	c.execute ("INSERT INTO temperatur VALUES (NULL,datetime(CURRENT_TIMESTAMP,'localtime'),?,?,?,?,?,?,?,?,?,?)", (temp1,temp2,temp3,temp4,temp5,temp6,temp7,temp8,temp9,temp10,))
 	conn.commit()
 	#conn.close()
 except Exception as e: 
